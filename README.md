@@ -1,6 +1,6 @@
 # Django-Website
 
-This repository contains the apps present on my Django website.
+This repository contains the apps present in my Django website.
 
 ## Apps
 
