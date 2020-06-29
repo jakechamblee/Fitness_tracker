@@ -57,17 +57,3 @@ class Workout(models.Model):
         return f'{self.name} workout'
 
 
-# class WorkoutInstance(models.Model):
-#     # id = models.UUIDField(primary_key=True, default=uuid.uuid4(), help_text='Unique ID for a particular workout.')
-#     date_performed = models.DateField(default=timezone.now)
-#     exerciseinstances = models.ManyToManyField(ExerciseInstance)
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     # may need a many to many field? There will be many exercises to many workouts
-#     workout = models.ForeignKey(Workout, on_delete=models.PROTECT)
-#
-#     def __str__(self):
-#         return f'{self.user} workout on {self.date_performed}.'
-#
-
-# class Workout(models.Model):
-

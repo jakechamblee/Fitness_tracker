@@ -19,7 +19,7 @@ class PostListView(ListView):
     paginate_by = 5
 
 
-class UserPostListView(ListView):  # gets the posts for a specific user
+class UserPostListView(ListView):
     model = Post
     template_name = 'blog/user_posts.html'
     context_object_name = 'posts'
@@ -28,7 +28,6 @@ class UserPostListView(ListView):  # gets the posts for a specific user
     def get_queryset(self):
         # you are passing a dict object as {'username': 'exampleusername'} by the use of self.kwargs
         # this is the captured URL keyword argument, and it comes from the captured value in the URLpath/URLconf
-        # thus, you search that dictionary with python's get() function for the username key
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(author=user).order_by('-date_posted')
 
@@ -45,7 +44,6 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         # overriding form_valid() to set the author to the user creating the post
-        # otherwise the view does not know who the author of the post is
         form.instance.author = self.request.user
         return super().form_valid(form)
 
