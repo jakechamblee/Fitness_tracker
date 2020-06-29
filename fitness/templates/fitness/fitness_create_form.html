@@ -1,0 +1,19 @@
+{% extends 'fitness/base_fitness.html' %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="row">
+</div>
+<form class="form" method="POST">
+    <legend class="border-bottom mb-4" style="color:#007777">Add a finished exercise</legend>
+        <div class='col-md-5'>
+        {% csrf_token %}
+        {{ form|crispy }}
+                <button class="btn btn-outline-info" type="submit">Submit</button>
+        </div>
+</form>
+<br>
+{% endblock content %}
+<!--
+-->

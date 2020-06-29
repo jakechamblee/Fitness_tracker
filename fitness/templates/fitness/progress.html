@@ -1,0 +1,35 @@
+{% extends 'fitness/base_fitness.html' %}
+<!--
+-->
+{% block content %}
+<html>
+<head>
+  <title>test</title>
+  <style type = 'text/css'>
+  h2.graph-title {
+    color: #007777;
+    text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div>
+  <h1></h1>
+  </div>
+    <div>
+      <br>
+    <!-- {{ graph }} is a (massive) string of html so autoescaping is needed to avoid printing the html text -->
+      {% autoescape off %}
+      {{ graph }}
+      {% endautoescape %}
+    </div>
+  <br>
+  {% for obj in all_exercise_names %}
+      <a class="btn btn-info mb-2" href="{% url 'fitness-progress' obj %}">{{ obj }}</a>
+      {% endfor %}
+</body>
+<footer>
+</footer>
+</html>
+
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+{% block content %}
+{% for question in questions %}
+<div class="media-body">
+    <div class="article-metadata">
+        <medium class="text-muted">{{ question.pub_date|date:'F d, Y' }}</medium>
+    </div>
+    <a class="article-content" href="{% url 'polls-detail' question.pk %}">{{ question.question_text }}</a>
+</div>
+{% endfor %}
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends 'fitness/base_fitness.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<body>
+<h2>{{ object }}</h2>
+  <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4" style="color: #007777">Update Exercise</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+{% endblock content %}

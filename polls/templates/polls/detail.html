@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% block content %}
+          <div class="media-body">
+            <div class="article-metadata">
+              <medium class="text-muted">{{ object.pub_date|date:'F d, Y' }}</medium>
+            </div>
+            <p class="article-content">{{ object.question_text }}</p>
+          </div>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls-vote' question.pk %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.pk }}">
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+{% endfor %}
+    <button class="btn btn-outline-info" type="submit" href="{% url 'polls-results' question.pk %}">Vote</button>
+    <a class="btn btn-outline-info" href="{% url 'polls-results' question.pk %}">Results</a>
+</form>
+{% endblock content %}

@@ -1,0 +1,56 @@
+{% extends 'fitness/base_fitness.html' %}
+{% load static %}
+{% block content %}
+<html>
+  <head>
+      <meta charset="utf-8">
+      <link rel='stylesheet' type="text/css" href="{% static 'fitness/home_table.css' %}">
+  </head>
+  <body>
+      <table>
+          <h4 style="text-align: left; color: #007777;">Exercises for {{ user }}</h4>
+          <colgroup>
+              <col style="background-color: yellow">
+          </colgroup>
+          <thead>
+            <th>Date</th>
+            <th>Exercise</th>
+            <th>Weight (lbs)</th>
+            <th>Sets x Reps</th>
+            <th>Volume</th>
+          </thead>
+          {% for obj in exercise_instances %}
+          <tr>
+              <td><em><a href="{% url 'fitness-update' obj.id %}" >{{ obj.date_performed|date:'F d, Y' }}</a></em></td>
+              <td>{{ obj.name }}</td>
+              <td>{{ obj.weight }}</td>
+              <td>{{ obj.sets }}x{{ obj.reps }}</td>
+              <td>{{ obj.volume }}</td>
+          </tr>
+          {% endfor %}
+      </table>
+  <div>
+      <br>
+{% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a class='btn btn-outline-info mb-6' href="?page=1">First</a>
+        {% endif %}
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <a class='btn btn-info mb-6' href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a class='btn btn-outline-info mb-6' href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+    {% if page_obj.has_next %}
+        <a class='btn btn-outline-info mb-6' href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+    {% endif %}
+{% endif %}
+</div>
+      <br>
+  {% for obj in exercise_names %}
+      <a class="btn btn-info mb-2" href="{% url 'fitness-progress' obj.name %}">{{ obj.name }}</a>
+      {% endfor %}
+  </body>
+</html>
+{% endblock content %}
