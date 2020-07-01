@@ -67,6 +67,7 @@ def exerciseinstancesgraph(request, **kwargs):
     fitness_queryset = all_user_data.filter(name_id=exercise_id)
 
     graph = fitness_graph(fitness_queryset, ex_name)
+    # IMPROVEMENT: do not add names to all_exercise_names if there is no data for that exercise
     all_exercise_names = [ex.name for ex in Exercise.objects.all()]
 
     context = {'graph': graph, 'all_exercise_names': all_exercise_names, 'ex_name': ex_name}
