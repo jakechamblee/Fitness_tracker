@@ -14,10 +14,6 @@ class ExerciseInstanceListView(LoginRequiredMixin, ListView):
     context_object_name = 'exercise_instances'
     paginate_by = 15
 
-    # Need to show this data in table format, then as a graph on the progress page
-    # Finally, need to make the table update-able for the user using updateviews and delete views when they click
-    # on a particular piece of data in the table
-
     def get_queryset(self):
         current_user = self.request.user
         return ExerciseInstance.objects.filter(user=current_user).order_by('-date_performed')
@@ -68,9 +64,9 @@ def exerciseinstancesgraph(request, **kwargs):
 
     graph = fitness_graph(fitness_queryset, ex_name)
     # IMPROVEMENT: do not add names to all_exercise_names if there is no data for that exercise
-    all_exercise_names = [ex.name for ex in Exercise.objects.all()]
+    exercise_names = Exercise.objects.all()
 
-    context = {'graph': graph, 'all_exercise_names': all_exercise_names, 'ex_name': ex_name}
+    context = {'graph': graph, 'exercise_names': exercise_names, 'ex_name': ex_name}
     return render(request, template_name='fitness/progress.html', context=context)
 
 

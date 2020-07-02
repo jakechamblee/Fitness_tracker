@@ -24,7 +24,7 @@
       {% endautoescape %}
     </div>
   <br>
-  {% for obj in all_exercise_names %}
+  {% for obj in exercise_names %}
       <a class="btn btn-info mb-2" href="{% url 'fitness-progress' obj %}">{{ obj }}</a>
   {% endfor %}
 </body>
