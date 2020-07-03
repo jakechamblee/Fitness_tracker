@@ -52,18 +52,17 @@ def exerciseinstancesgraph(request, **kwargs):
     current_user_id = request.user.id
     all_user_data = ExerciseInstance.objects.filter(user_id=current_user_id)
 
-    # Gets the clicked on Exercise name from the captured URL; finds the exercise id which corresponds with that name
     exercise_name_ids = {ex.name: ex.id for ex in Exercise.objects.all()}
 
-    # gets the Exercise model with the name passed in the captured URL via kwargs
+    # Gets the Exercise model with the name passed in the captured URL via kwargs
     ex_name = get_object_or_404(Exercise, name=kwargs.get('exercise_name'))
     exercise_id = exercise_name_ids[ex_name.name]
 
-    # filters the user's data for only instances of the exercise name which was clicked
+    # Filters the user's data for only instances of the exercise name which was clicked
     fitness_queryset = all_user_data.filter(name_id=exercise_id)
 
     graph = fitness_graph(fitness_queryset, ex_name)
-    # IMPROVEMENT: do not add names to all_exercise_names if there is no data for that exercise
+    # IMPROVEMENT: do not add names to exercise_names if there is no data for that exercise
     exercise_names = Exercise.objects.all()
 
     context = {'graph': graph, 'exercise_names': exercise_names, 'ex_name': ex_name}

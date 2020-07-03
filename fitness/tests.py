@@ -17,13 +17,9 @@ class TestFitnessResponses:
         client.login(username=username, password=password)
         assert client.get(reverse('fitness-home')).status_code == 200
 
-    # def test_fitness_progress(self):
-    #     client = Client()
-    #     assert client.get(reverse('fitness-progress', kwargs={'exercise_name': 'Plank'})).status_code == 200
-
     def test_fitness_progress(self):
         client = Client()
-        assert client.get('/fitness/progress/Plank/').status_code == 200
+        assert client.get(reverse('fitness-progress', kwargs={'exercise_name': 'Plank'})).status_code == 200
 
     def test_fitness_create(self):
         username = 'testusername'
@@ -31,7 +27,7 @@ class TestFitnessResponses:
         client = Client()
         User.objects.create_user(username=username, password=password)
         client.login(username=username, password=password)
-        assert client.get('/fitness/fitness_create_form/').status_code == 200
+        assert client.get(reverse('fitness-create').status_code == 200
 
     def test_fitness_update(self):
         username = 'testusername'
