@@ -28,6 +28,9 @@ class TestFitness:
     def test_exercise_instance_create(self):
         assert ExerciseInstance.objects.create(name=Exercise.objects.all()[0], sets=5, reps=5, weight=5, user=user)
 
+    def test_exercise_instance_volume_method(self):
+        assert ExerciseInstance.objects.all()[0].volume() == 25
+
     def test_fitness_home_response(self):
         assert self.client.get(reverse('fitness-home')).status_code == 200
 
@@ -39,6 +42,3 @@ class TestFitness:
 
     def test_fitness_update_response(self):
         assert self.client.get(reverse('fitness-update', kwargs={'pk': 1})).status_code == 200
-
-    def test_exercise_instance_volume_method(self):
-        assert ExerciseInstance.objects.all()[0].volume() == 25
