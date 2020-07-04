@@ -8,40 +8,30 @@ from django.contrib.auth.models import User
 
 @pytest.mark.django_db
 class TestFitnessResponses:
+    username = 'dummyusername'
+    password = 'testing321'
+    client = Client()
+
+    @pytest.fixture(autouse=True)
+    def setup_stuff(self, db):
+        # For some reason, could not access the database to create a user, despite being capable of creating other
+        # model objects like Exercise/ExerciseInstance. Needed to use this fixture setup as a workaround.
+        global user
+        user = User.objects.create_user(username=self.username, password=self.password)
+        self.client.login(username=self.username, password=self.password)
 
     def test_fitness_home(self):
-        username = 'testusername'
-        password = 'testing321'
-        client = Client()
-        User.objects.create_user(username=username, password=password)
-        client.login(username=username, password=password)
-        assert client.get(reverse('fitness-home')).status_code == 200
+        assert self.client.get(reverse('fitness-home')).status_code == 200
 
     def test_fitness_progress(self):
-        client = Client()
-        assert client.get(reverse('fitness-progress', kwargs={'exercise_name': 'Plank'})).status_code == 200
+        Exercise.objects.create(name='Bicep Curl', type='db')
+        ExerciseInstance.objects.create(name=Exercise.objects.all()[0], sets=5, reps=5, weight=5, user=user)
+        assert self.client.get(reverse('fitness-progress', kwargs={'exercise_name': 'Bicep Curl'})).status_code == 200
 
     def test_fitness_create(self):
-        username = 'testusername'
-        password = 'testing321'
-        client = Client()
-        User.objects.create_user(username=username, password=password)
-        client.login(username=username, password=password)
-        assert client.get(reverse('fitness-create').status_code == 200
+        assert self.client.get(reverse('fitness-create')).status_code == 200
 
     def test_fitness_update(self):
-        username = 'testusername'
-        password = 'testing321'
-        client = Client()
-        User.objects.create_user(username=username, password=password)
-        client.login(username=username, password=password)
-        assert client.get(reverse('fitness-update', kwargs={'pk': 30})).status_code == 200
-
-
-# def test_fitness_create_form():
-
-
-# def create_ExerciseInstance():
-#     ex_instance = ExerciseInstance.objects.create(date_performed='', )
-
-# def create_Exercise():
+        Exercise.objects.create(name='Bicep Curl', type='db')
+        ExerciseInstance.objects.create(name=Exercise.objects.all()[0], sets=5, reps=5, weight=5, user=user)
+        assert self.client.get(reverse('fitness-update', kwargs={'pk': 1})).status_code == 200
