@@ -14,9 +14,9 @@ class TestFitness:
 
     @pytest.fixture(autouse=True)
     def setup_stuff(self):
-        # For some reason, could not access the database to create a user in the class, despite @pytest.mark.django_db
+        # Strangely, could not access the database to create a user in the class scope, despite @pytest.mark.django_db
         # being sufficient for model objects like Exercise/ExerciseInstance. This setup fixture is the workaround.
-        global user
+        global user     # needs to be global to be accessible to the test functions
         user = User.objects.create_user(username=self.username, password=self.password)
         self.client.login(username=self.username, password=self.password)
         Exercise.objects.create(name='Bicep Curl', type='db')
