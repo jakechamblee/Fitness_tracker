@@ -6,4 +6,4 @@ class BlogIndexViewTest(TestCase):
     def test_index_view_status_code(self):
         url = reverse('blog-home')
         response = self.client.get(url)
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
