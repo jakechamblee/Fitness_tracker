@@ -12,4 +12,4 @@ This repository contains the apps present in my Django website.
   
 - **Blog**
 
-  This is a generic blog CRUD app. Fairly basic at the moment.
+  This is a generic blog app. Basic and incomplete at the moment.
