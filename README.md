@@ -1,6 +1,6 @@
 # Django-Website
-
-This repository contains the apps present in my Django website.
+Also on dockerhub:
+https://hub.docker.com/repository/docker/jchamblee1995/django_website
 
 ## Apps
 
