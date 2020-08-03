@@ -4,8 +4,11 @@ python:
 
 install:
   - pip install -r requirements.txt
-  - pip install codecov
-  - pip install coverage
+  - pip install coverage codecov
+
+env:
+  global:
+    - SECRET_KEY = "m_4sgkzhiq2dqofwjm_%_uqbj0u3zsx#p)xkeha$o8fjr1=f$b"
 
 script:
   - pytest
