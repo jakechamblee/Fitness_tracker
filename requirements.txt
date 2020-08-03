@@ -38,7 +38,6 @@ plotly==4.8.1
 pluggy==0.13.1
 py==1.9.0
 pyparsing==2.4.7
-pypiwin32==223
 pytest==5.4.3
 pytest-django==3.9.0
 pytest-forked==1.2.0
