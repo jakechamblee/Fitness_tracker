@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['localhost', 'testserver']
 
 INSTALLED_APPS = [
     'fitness.apps.FitnessConfig',
-    'polls.apps.PollsConfig',
     'users.apps.UsersConfig',
     'blog.apps.BlogConfig',
     'restapi.apps.RestapiConfig',
