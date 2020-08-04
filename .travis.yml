@@ -14,7 +14,7 @@ env:
     - SECRET_KEY = "m_4sgkzhiq2dqofwjm_%_uqbj0u3zsx#p)xkeha$o8fjr1=f$b"
 
 script:
-  - pytest --cov=.
+  - pytest --cov=fitness --cov=blog --cov=users
 
 after_success:
   - codecov
