@@ -15,6 +15,7 @@ env:
 
 script:
   - pytest
+  - pytest --cov=.
 
 after_success:
   - codecov
