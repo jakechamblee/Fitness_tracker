@@ -14,13 +14,13 @@ install:
 
 env:
   global:
-    - SECRET_KEY = $SECRET_KEY_DJANGO
+    - SECRET_KEY = 'gfmhh-mh2+&kqh&@9y9-!j9_t@0juipbyutxs^htb+%@(#$f-l'
 
 script:
   - pytest --cov=fitness --cov=blog --cov=users
 
 before_deploy:
-  - docker login -u "$DOCKER_USERNAME" --password-stdin "$DOCKER_PASSWORD"
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker build -t jchamblee1995/django_website:latest .
 
 deploy:
