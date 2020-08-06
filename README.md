@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/jakechamblee/Django-Website.svg?branch=master)](https://travis-ci.com/jakechamblee/Django-Website)
+[![Build Status](https://travis-ci.org/jakechamblee/Django-Website.svg?branch=master)](https://travis-ci.org/jakechamblee/Django-Website)
 [![codecov](https://codecov.io/gh/jakechamblee/Django-Website/branch/master/graph/badge.svg)](https://codecov.io/gh/jakechamblee/Django-Website)
 # Django-Website
 Also on dockerhub:
