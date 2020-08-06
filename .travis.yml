@@ -14,7 +14,7 @@ install:
 
 env:
   global:
-    - SECRET_KEY = 'gfmhh-mh2+&kqh&@9y9-!j9_t@0juipbyutxs^htb+%@(#$f-l'
+    - SECRET_KEY = $SECRET_KEY_DJANGO
 
 script:
   - pytest --cov=fitness --cov=blog --cov=users
