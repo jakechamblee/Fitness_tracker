@@ -2,7 +2,12 @@ language: python
 python:
   - "3.7.4"
 
+services:
+  - docker
+
 before_install:
+  - docker build --tag django_website .
+  - docker push jchamblee1995/django_website:latest
   - pip install -U pip
 
 install:
@@ -15,6 +20,18 @@ env:
 
 script:
   - pytest --cov=fitness --cov=blog --cov=users
+  - docker build -t jchamblee1995/django_website:latest .
+
+after_script:
+
+before_deploy:
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+
+deploy:
+  provider: script
+  script: docker push jchamblee1995/django_website:latest
+  on:
+    branch: master
 
 after_success:
   - codecov
