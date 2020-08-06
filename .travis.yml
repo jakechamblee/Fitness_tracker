@@ -14,7 +14,7 @@ install:
 
 env:
   global:
-    - SECRET_KEY = 'ibd#eog7^)6-*!220!i(6q%$vhg*c95#7b^admqv4naxcznnuc'
+    - SECRET_KEY = $SECRET_KEY_DJANGO
 
 script:
   - pytest --cov=fitness --cov=blog --cov=users
