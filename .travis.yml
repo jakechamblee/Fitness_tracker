@@ -20,7 +20,7 @@ script:
   - pytest --cov=fitness --cov=blog --cov=users
 
 before_deploy:
-  - docker login -u "$DOCKER_USERNAME" --password-stdin "$DOCKER_PASSWORD"
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker build -t jchamblee1995/django_website:latest .
 
 deploy:
