@@ -1,8 +1,10 @@
 [![Build Status](https://travis-ci.com/jakechamblee/Django-Website.svg?branch=master)](https://travis-ci.com/jakechamblee/Django-Website)
 [![codecov](https://codecov.io/gh/jakechamblee/Django-Website/branch/master/graph/badge.svg)](https://codecov.io/gh/jakechamblee/Django-Website)
 # Django-Website
-Also on dockerhub:
-https://hub.docker.com/repository/docker/jchamblee1995/django_website
+Also on dockerhub: https://hub.docker.com/repository/docker/jchamblee1995/django_website
+```bash 
+docker pull jchamblee1995/django_website:latest
+```
 
 ## Apps
 
