@@ -1,5 +1,5 @@
 apipkg==1.5
-asgiref==3.2.7
+asgiref
 atomicwrites==1.4.0
 attrs==19.3.0
 Brotli==1.0.7
