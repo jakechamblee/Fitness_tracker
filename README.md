@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.com/jakechamblee/Django-Website.svg?branch=master)](https://travis-ci.com/jakechamblee/Django-Website)
-[![codecov](https://codecov.io/gh/jakechamblee/Django-Website/branch/master/graph/badge.svg)](https://codecov.io/gh/jakechamblee/Django-Website)
+[![Build Status](https://travis-ci.com/jakechamblee/Fitness_tracker_webapp.svg?branch=master)](https://travis-ci.com/github/jakechamblee/Fitness_tracker_webapp)
+[![codecov](https://codecov.io/gh/jakechamblee/Fitness_tracker_webapp/branch/master/graph/badge.svg)](https://travis-ci.com/github/jakechamblee/Fitness_tracker_webapp)
 # Fitness Tracker
 On dockerhub: https://hub.docker.com/repository/docker/jchamblee1995/django_website
 ```bash 
